@@ -1,0 +1,64 @@
+---
+title: "Smoking Status and Blood Pressure"
+author: "Nontu"
+output: html_document
+---
+
+# Introduction
+
+High blood pressure is an important public health concern. This mini report explores a small example dataset to compare blood pressure levels between smokers and non-smokers.
+
+# Objective
+
+The objective of this analysis is to describe blood pressure patterns by smoking status.
+
+# Methods
+
+A small example dataset was created in R. The dataset includes patient age, smoking status, and blood pressure.
+
+```{r}
+patient_id <- 1:8
+age <- c(25, 40, 35, 60, 50, 28, 45, 55)
+smoker <- c("Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No")
+blood_pressure <- c(120, 140, 135, 150, 145, 125, 155, 138)
+
+patients <- data.frame(patient_id, age, smoker, blood_pressure)
+
+patients
+```
+
+# Results
+
+## Average blood pressure
+
+```{r}
+mean(blood_pressure)
+```
+
+## Average blood pressure by smoking status
+
+```{r}
+tapply(blood_pressure, smoker, mean)
+```
+
+## Create a risk category
+
+```{r}
+patients$risk <- ifelse(blood_pressure > 140, "High", "Normal")
+
+patients
+```
+
+## Patients with high blood pressure
+
+```{r}
+patients[patients$risk == "High", ]
+```
+
+# Interpretation
+
+The analysis compares blood pressure values between smokers and non-smokers in this example dataset. The risk category identifies patients with blood pressure above 140 as high risk.
+
+# Conclusion
+
+This project demonstrates how R Markdown can be used to combine text, R code, results, and interpretation in one reproducible public health report.
