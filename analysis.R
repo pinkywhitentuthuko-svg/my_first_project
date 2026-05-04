@@ -17,3 +17,4 @@ people$category <- ifelse(ages > 30, "Older", "Younger")
 
 people
 people$total <- ages + 5
+people$age_squared <- ages^2
